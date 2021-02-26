@@ -30,11 +30,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="writeMsg_TF" pref="317" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="send_Label" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="send_Btn" min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="server_Label" min="-2" pref="102" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="turnOn_Btn" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -45,12 +46,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="server_Label" min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="server_Label" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="turnOn_Btn" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="textField_TF" min="-2" pref="195" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="send_Label" pref="42" max="32767" attributes="0"/>
+                  <Component id="send_Btn" pref="42" max="32767" attributes="0"/>
                   <Component id="writeMsg_TF" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -79,7 +83,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="writeMsg_TFActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="send_Label">
+    <Component class="javax.swing.JButton" name="send_Btn">
       <Properties>
         <Property name="text" type="java.lang.String" value="-&gt;"/>
       </Properties>
@@ -88,6 +92,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Server"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="turnOn_Btn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Turn ON"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="turnOn_BtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

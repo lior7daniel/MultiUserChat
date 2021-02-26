@@ -30,7 +30,7 @@ public class ClientGUI extends javax.swing.JFrame {
         server_Label = new javax.swing.JLabel();
         textField_TF = new javax.swing.JTextField();
         writeMsg_TF = new javax.swing.JTextField();
-        send_Label = new javax.swing.JButton();
+        send_Btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,7 +52,7 @@ public class ClientGUI extends javax.swing.JFrame {
             }
         });
 
-        send_Label.setText("->");
+        send_Btn.setText("->");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,7 +68,7 @@ public class ClientGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(writeMsg_TF)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(send_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -80,7 +80,7 @@ public class ClientGUI extends javax.swing.JFrame {
                 .addComponent(textField_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(send_Label, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(writeMsg_TF))
                 .addContainerGap())
         );
@@ -132,7 +132,7 @@ public class ClientGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton send_Label;
+    private javax.swing.JButton send_Btn;
     private javax.swing.JLabel server_Label;
     private javax.swing.JTextField textField_TF;
     private javax.swing.JTextField writeMsg_TF;

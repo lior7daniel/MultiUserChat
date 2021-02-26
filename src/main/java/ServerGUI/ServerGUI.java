@@ -29,8 +29,9 @@ public class ServerGUI extends javax.swing.JFrame {
 
         textField_TF = new javax.swing.JTextField();
         writeMsg_TF = new javax.swing.JTextField();
-        send_Label = new javax.swing.JButton();
+        send_Btn = new javax.swing.JButton();
         server_Label = new javax.swing.JLabel();
+        turnOn_Btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,9 +51,16 @@ public class ServerGUI extends javax.swing.JFrame {
             }
         });
 
-        send_Label.setText("->");
+        send_Btn.setText("->");
 
         server_Label.setText("Server");
+
+        turnOn_Btn.setText("Turn ON");
+        turnOn_Btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turnOn_BtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,22 +73,25 @@ public class ServerGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(writeMsg_TF, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(send_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(turnOn_Btn)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(turnOn_Btn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textField_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(send_Label, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(writeMsg_TF))
                 .addContainerGap())
         );
@@ -95,6 +106,10 @@ public class ServerGUI extends javax.swing.JFrame {
     private void writeMsg_TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writeMsg_TFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_writeMsg_TFActionPerformed
+
+    private void turnOn_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOn_BtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_turnOn_BtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,9 +147,10 @@ public class ServerGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton send_Label;
+    private javax.swing.JButton send_Btn;
     private javax.swing.JLabel server_Label;
     private javax.swing.JTextField textField_TF;
+    private javax.swing.JButton turnOn_Btn;
     private javax.swing.JTextField writeMsg_TF;
     // End of variables declaration//GEN-END:variables
 }
