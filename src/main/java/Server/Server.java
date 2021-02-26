@@ -20,6 +20,8 @@ public class Server {
 			while(true) {
 				Socket clientSocket = serverSocket.accept();
 				System.out.println(clientSocket.getPort() + " is now online!");
+                                ClientHandler client = new ClientHandler(clientSocket);
+				client.start();
 			}
 			
 		} catch (IOException e) {
