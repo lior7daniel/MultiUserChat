@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Client;
 
 import java.io.IOException;
@@ -10,10 +5,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Lior
- */
+
 public class ClientGUI extends javax.swing.JFrame {
     
     private int port;
@@ -86,6 +78,7 @@ public class ClientGUI extends javax.swing.JFrame {
 
         send_Btn.setText("->");
 
+        textArea.setEditable(false);
         textArea.setColumns(20);
         textArea.setRows(5);
         jScrollPane1.setViewportView(textArea);
@@ -166,13 +159,26 @@ public class ClientGUI extends javax.swing.JFrame {
 
     private void connectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_connectButtonActionPerformed
         
-        this.ipAdress = ipAdresstextField.getText();
-        this.port = Integer.parseInt(portTextField.getText());
-        try {
-            this.mySocket = new Socket(this.ipAdress, this.port);
-        } catch (IOException ex) {
-            Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
+        if(connectButton.getText().equals("Connect")){
+            this.ipAdress = ipAdresstextField.getText();
+            this.port = Integer.parseInt(portTextField.getText());
+            try {
+                this.mySocket = new Socket(this.ipAdress, this.port);
+            } catch (IOException ex) {
+                Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            connectButton.setText("Disconnect");
         }
+        else {
+            try {
+                mySocket.close();
+            } catch (IOException ex) {
+                Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            connectButton.setText("Connect");
+        }
+        
+         
         
     }//GEN-LAST:event_connectButtonActionPerformed
 
@@ -227,4 +233,10 @@ public class ClientGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea textArea;
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void setTextArea(String txt){
+        textArea.append(txt + System.lineSeparator());
+    }
+    
 }

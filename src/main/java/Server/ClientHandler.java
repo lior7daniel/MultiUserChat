@@ -1,36 +1,41 @@
 package Server;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
 public class ClientHandler extends Thread{
 
-	private Socket clientSocket;
+	private ServerGUI myServerGUI;
+        private Socket clientSocket;
+        private OutputStream outputStream;
+        private InputStream inputStream;
+
 	
-	public ClientHandler(Socket clientSocket) {
+	public ClientHandler(ServerGUI myServerGUI, Socket clientSocket) {
 		this.clientSocket = clientSocket;
+                this.myServerGUI = myServerGUI;
 	}
 	
 	@Override
-	public void run() {
-			try {
-				handleClientSocket();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+	public void run() {           
+            myServerGUI.setTextArea("ServerMSG: " + clientSocket.getPort() + " is now online!");
+            
+            try {
+                    handleClientSocket();
+            } catch (IOException e) {
+                    e.printStackTrace();
+            } catch (InterruptedException e) {
+                    e.printStackTrace();
+            }
 	}
 	
+        // while there is input from the clientSocket, write it into the serverGUI textArea.
 	private void handleClientSocket() throws IOException, InterruptedException {
-		OutputStream outputStream = clientSocket.getOutputStream();
-		outputStream.write(("Welcome! you are online!\r\n\r\n").getBytes());
-		for(int i = 5; i > 0; i--) {
-			outputStream.write((i + " seconds to disconnect.\r\n").getBytes());
-			Thread.sleep(1000);
-		}
-		clientSocket.close();
+                
+            
+              
 	}
 	
 }

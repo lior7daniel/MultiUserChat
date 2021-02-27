@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Server;
 
 import Server.Server;
@@ -10,17 +5,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Lior
- */
 public class ServerGUI extends javax.swing.JFrame {
     
     Server myServer;
-    
-    /**
-     * Creates new form ServerGUI
-     */
+
     public ServerGUI() {
         initComponents();
     }
