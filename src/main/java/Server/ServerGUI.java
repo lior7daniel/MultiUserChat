@@ -3,14 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ServerGUI;
+package Server;
+
+import Server.Server;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Lior
  */
 public class ServerGUI extends javax.swing.JFrame {
-
+    
+    Server myServer;
+    
     /**
      * Creates new form ServerGUI
      */
@@ -27,40 +34,57 @@ public class ServerGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textField_TF = new javax.swing.JTextField();
-        writeMsg_TF = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+        textField = new javax.swing.JTextField();
         send_Btn = new javax.swing.JButton();
-        server_Label = new javax.swing.JLabel();
-        turnOn_Btn = new javax.swing.JButton();
+        menuBar = new javax.swing.JMenuBar();
+        file_menuItem = new javax.swing.JMenu();
+        turnOn_menuItem = new javax.swing.JMenuItem();
+        turnOff_menuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textField_TF.setEditable(false);
-        textField_TF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField_TFActionPerformed(evt);
-            }
-        });
+        textArea.setEditable(false);
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
 
-        writeMsg_TF.setToolTipText("write here..");
-        writeMsg_TF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        writeMsg_TF.setName(""); // NOI18N
-        writeMsg_TF.addActionListener(new java.awt.event.ActionListener() {
+        textField.setToolTipText("write here..");
+        textField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textField.setName(""); // NOI18N
+        textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                writeMsg_TFActionPerformed(evt);
+                textFieldActionPerformed(evt);
             }
         });
 
         send_Btn.setText("->");
 
-        server_Label.setText("Server");
+        file_menuItem.setText("File");
 
-        turnOn_Btn.setText("Turn ON");
-        turnOn_Btn.addActionListener(new java.awt.event.ActionListener() {
+        turnOn_menuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
+        turnOn_menuItem.setText("Turn ON");
+        turnOn_menuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                turnOn_BtnActionPerformed(evt);
+                turnOn_menuItemActionPerformed(evt);
             }
         });
+        file_menuItem.add(turnOn_menuItem);
+
+        turnOff_menuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, 0));
+        turnOff_menuItem.setText("Turn OFF");
+        turnOff_menuItem.setEnabled(false);
+        turnOff_menuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                turnOff_menuItemActionPerformed(evt);
+            }
+        });
+        file_menuItem.add(turnOff_menuItem);
+
+        menuBar.add(file_menuItem);
+
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,47 +93,49 @@ public class ServerGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textField_TF)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(writeMsg_TF, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                        .addComponent(textField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(turnOn_Btn)))
+                        .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(turnOn_Btn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textField_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(writeMsg_TF))
+                    .addComponent(textField)
+                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField_TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_TFActionPerformed
+    private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField_TFActionPerformed
+    }//GEN-LAST:event_textFieldActionPerformed
 
-    private void writeMsg_TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writeMsg_TFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_writeMsg_TFActionPerformed
+    private void turnOn_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOn_menuItemActionPerformed
+        myServer = new Server(this);
+        myServer.start();
+        turnOn_menuItem.setEnabled(false);
+        turnOff_menuItem.setEnabled(true);
+        
+    }//GEN-LAST:event_turnOn_menuItemActionPerformed
 
-    private void turnOn_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOn_BtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_turnOn_BtnActionPerformed
+    private void turnOff_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOff_menuItemActionPerformed
+        try {
+            myServer.shutDown();
+        } catch (IOException ex) {
+            Logger.getLogger(ServerGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        turnOff_menuItem.setEnabled(false);
+        turnOn_menuItem.setEnabled(true);
+    }//GEN-LAST:event_turnOff_menuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,10 +173,22 @@ public class ServerGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu file_menuItem;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuBar menuBar;
     private javax.swing.JButton send_Btn;
-    private javax.swing.JLabel server_Label;
-    private javax.swing.JTextField textField_TF;
-    private javax.swing.JButton turnOn_Btn;
-    private javax.swing.JTextField writeMsg_TF;
+    private javax.swing.JTextArea textArea;
+    private javax.swing.JTextField textField;
+    private javax.swing.JMenuItem turnOff_menuItem;
+    private javax.swing.JMenuItem turnOn_menuItem;
     // End of variables declaration//GEN-END:variables
+
+
+    public void setTextArea(String txt){
+        textArea.append(txt);
+    }
+    
+    
+    
+
 }

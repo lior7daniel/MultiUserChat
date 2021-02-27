@@ -4,22 +4,30 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class Server extends Thread{
 
-	private int port = 1991;
+	private final int port = 1991;
 	private ServerSocket serverSocket;
+        
+        ServerGUI myServerGUI;
 
-	public Server() {
-		runServer();
+	public Server(ServerGUI serverGUI) {
+            this.myServerGUI = serverGUI;
 	}
 
+        @Override
+        public void run(){
+            runServer();
+        }
+        
 	private void runServer() {
 		try {
 			serverSocket = new ServerSocket(port);
 			System.out.println("Waiting for connection...");
 			while(true) {
 				Socket clientSocket = serverSocket.accept();
-				System.out.println(clientSocket.getPort() + " is now online!");
+				System.out.println();
+                                myServerGUI.setTextArea(clientSocket.getPort() + " is now online!");
                                 ClientHandler client = new ClientHandler(clientSocket);
 				client.start();
 			}
@@ -27,14 +35,12 @@ public class Server {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
 	}
 
-
-
-	public static void main(String[] args) {
-		Server myServer = new Server();
-	}
-
+        protected void shutDown() throws IOException{
+            serverSocket.close();
+        }
+        
+        
+        
 }

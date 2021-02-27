@@ -27,32 +27,38 @@ public class ClientGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        server_Label = new javax.swing.JLabel();
-        textField_TF = new javax.swing.JTextField();
-        writeMsg_TF = new javax.swing.JTextField();
+        textField = new javax.swing.JTextField();
         send_Btn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        server_Label.setText("Client");
-
-        textField_TF.setEditable(false);
-        textField_TF.addActionListener(new java.awt.event.ActionListener() {
+        textField.setToolTipText("write here..");
+        textField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        textField.setName(""); // NOI18N
+        textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField_TFActionPerformed(evt);
-            }
-        });
-
-        writeMsg_TF.setToolTipText("write here..");
-        writeMsg_TF.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        writeMsg_TF.setName(""); // NOI18N
-        writeMsg_TF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                writeMsg_TFActionPerformed(evt);
+                textFieldActionPerformed(evt);
             }
         });
 
         send_Btn.setText("->");
+
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,12 +67,9 @@ public class ClientGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 278, Short.MAX_VALUE))
-                    .addComponent(textField_TF)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(writeMsg_TF)
+                        .addComponent(textField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -75,26 +78,20 @@ public class ClientGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(server_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textField_TF, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                    .addComponent(writeMsg_TF))
+                    .addComponent(textField)
+                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField_TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_TFActionPerformed
+    private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField_TFActionPerformed
-
-    private void writeMsg_TFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_writeMsg_TFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_writeMsg_TFActionPerformed
+    }//GEN-LAST:event_textFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,9 +129,12 @@ public class ClientGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton send_Btn;
-    private javax.swing.JLabel server_Label;
-    private javax.swing.JTextField textField_TF;
-    private javax.swing.JTextField writeMsg_TF;
+    private javax.swing.JTextArea textArea;
+    private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables
 }
