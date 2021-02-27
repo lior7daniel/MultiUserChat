@@ -27,7 +27,7 @@ public class Server extends Thread{
 			while(true) {
 				Socket clientSocket = serverSocket.accept();
 				System.out.println();
-                                myServerGUI.setTextArea(clientSocket.getPort() + " is now online!");
+                                myServerGUI.setTextArea("ServerMSG: " + clientSocket.getPort() + " is now online!");
                                 ClientHandler client = new ClientHandler(clientSocket);
 				client.start();
 			}

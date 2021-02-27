@@ -6,9 +6,11 @@ Server/ServerGUI.java
  Server.ServerGUI$2
  Server.ServerGUI$3
  Server.ServerGUI$4
+ Server.ServerGUI$5
 Server/Server.java
  Server.Server
 Client/ClientGUI.java
- ClientGUI.ClientGUI
- ClientGUI.ClientGUI$1
- ClientGUI.ClientGUI$2
+ Client.ClientGUI
+ Client.ClientGUI$1
+ Client.ClientGUI$2
+ Client.ClientGUI$3

@@ -62,8 +62,13 @@ public class ServerGUI extends javax.swing.JFrame {
         send_Btn.setText("->");
 
         file_menuItem.setText("File");
+        file_menuItem.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                file_menuItemComponentAdded(evt);
+            }
+        });
 
-        turnOn_menuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, 0));
+        turnOn_menuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         turnOn_menuItem.setText("Turn ON");
         turnOn_menuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +77,7 @@ public class ServerGUI extends javax.swing.JFrame {
         });
         file_menuItem.add(turnOn_menuItem);
 
-        turnOff_menuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, 0));
+        turnOff_menuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         turnOff_menuItem.setText("Turn OFF");
         turnOff_menuItem.setEnabled(false);
         turnOff_menuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -93,7 +98,7 @@ public class ServerGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -104,11 +109,11 @@ public class ServerGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(textField)
-                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -136,6 +141,10 @@ public class ServerGUI extends javax.swing.JFrame {
         turnOff_menuItem.setEnabled(false);
         turnOn_menuItem.setEnabled(true);
     }//GEN-LAST:event_turnOff_menuItemActionPerformed
+
+    private void file_menuItemComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_file_menuItemComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_file_menuItemComponentAdded
 
     /**
      * @param args the command line arguments
@@ -185,7 +194,7 @@ public class ServerGUI extends javax.swing.JFrame {
 
 
     public void setTextArea(String txt){
-        textArea.append(txt);
+        textArea.append(txt + System.lineSeparator());
     }
     
     
