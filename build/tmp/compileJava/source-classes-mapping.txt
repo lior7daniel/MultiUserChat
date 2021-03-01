@@ -1,3 +1,11 @@
+Client/ClientGUI.java
+ Client.ClientGUI
+ Client.ClientGUI$1
+ Client.ClientGUI$2
+ Client.ClientGUI$3
+ Client.ClientGUI$4
+Client/Client.java
+ Client.Client
 Server/ServerGUI.java
  Server.ServerGUI
  Server.ServerGUI$1
@@ -5,12 +13,8 @@ Server/ServerGUI.java
  Server.ServerGUI$3
  Server.ServerGUI$4
  Server.ServerGUI$5
-Server/ClientHandler.java
- Server.ClientHandler
+ Server.ServerGUI$6
+Server/ServerClientHandler.java
+ Server.ServerClientHandler
 Server/Server.java
  Server.Server
-Client/ClientGUI.java
- Client.ClientGUI
- Client.ClientGUI$1
- Client.ClientGUI$2
- Client.ClientGUI$3

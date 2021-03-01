@@ -1,5 +1,8 @@
 package Client;
 
+
+
+import Server.Server;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
@@ -10,7 +13,7 @@ public class ClientGUI extends javax.swing.JFrame {
     
     private int port;
     private String ipAdress;
-    private Socket mySocket;
+    private Client myClient;
     
     /**
      * Creates new form ClientGUI
@@ -31,7 +34,7 @@ public class ClientGUI extends javax.swing.JFrame {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
         textField = new javax.swing.JTextField();
-        send_Btn = new javax.swing.JButton();
+        sendButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
         ipAdressLabel = new javax.swing.JLabel();
@@ -67,6 +70,7 @@ public class ClientGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        textField.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         textField.setToolTipText("write here..");
         textField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textField.setName(""); // NOI18N
@@ -76,7 +80,12 @@ public class ClientGUI extends javax.swing.JFrame {
             }
         });
 
-        send_Btn.setText("->");
+        sendButton.setText("->");
+        sendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendButtonActionPerformed(evt);
+            }
+        });
 
         textArea.setEditable(false);
         textArea.setColumns(20);
@@ -113,7 +122,7 @@ public class ClientGUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(textField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(portLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,7 +155,7 @@ public class ClientGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(textField)
-                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
+                    .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -162,25 +171,26 @@ public class ClientGUI extends javax.swing.JFrame {
         if(connectButton.getText().equals("Connect")){
             this.ipAdress = ipAdresstextField.getText();
             this.port = Integer.parseInt(portTextField.getText());
-            try {
-                this.mySocket = new Socket(this.ipAdress, this.port);
-            } catch (IOException ex) {
-                Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            
+            myClient = new Client(this, ipAdress, port);
+            myClient.start();
+            
             connectButton.setText("Disconnect");
         }
         else {
-            try {
-                mySocket.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ClientGUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            myClient = null;
+          
             connectButton.setText("Connect");
         }
         
          
         
     }//GEN-LAST:event_connectButtonActionPerformed
+
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        myClient.sendBroadcastMessage(textField.getText());
+        textField.setText("");
+    }//GEN-LAST:event_sendButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,7 +239,7 @@ public class ClientGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel portLabel;
     private javax.swing.JTextField portTextField;
-    private javax.swing.JButton send_Btn;
+    private javax.swing.JButton sendButton;
     private javax.swing.JTextArea textArea;
     private javax.swing.JTextField textField;
     // End of variables declaration//GEN-END:variables

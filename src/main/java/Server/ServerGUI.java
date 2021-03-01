@@ -1,6 +1,7 @@
 package Server;
 
-import Server.Server;
+
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,9 +24,9 @@ public class ServerGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        textArea = new javax.swing.JTextArea();
-        textField = new javax.swing.JTextField();
-        send_Btn = new javax.swing.JButton();
+        readerTextArea = new javax.swing.JTextArea();
+        senderTextField = new javax.swing.JTextField();
+        sendButton = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         file_menuItem = new javax.swing.JMenu();
         turnOn_menuItem = new javax.swing.JMenuItem();
@@ -33,21 +34,26 @@ public class ServerGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        textArea.setEditable(false);
-        textArea.setColumns(20);
-        textArea.setRows(5);
-        jScrollPane1.setViewportView(textArea);
+        readerTextArea.setEditable(false);
+        readerTextArea.setColumns(20);
+        readerTextArea.setRows(5);
+        jScrollPane1.setViewportView(readerTextArea);
 
-        textField.setToolTipText("write here..");
-        textField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textField.setName(""); // NOI18N
-        textField.addActionListener(new java.awt.event.ActionListener() {
+        senderTextField.setToolTipText("write here..");
+        senderTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        senderTextField.setName(""); // NOI18N
+        senderTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldActionPerformed(evt);
+                senderTextFieldActionPerformed(evt);
             }
         });
 
-        send_Btn.setText("->");
+        sendButton.setText("->");
+        sendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendButtonActionPerformed(evt);
+            }
+        });
 
         file_menuItem.setText("File");
         file_menuItem.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -88,9 +94,9 @@ public class ServerGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(textField)
+                        .addComponent(senderTextField)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(send_Btn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,17 +106,17 @@ public class ServerGUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textField)
-                    .addComponent(send_Btn, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
+                    .addComponent(senderTextField)
+                    .addComponent(sendButton, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
+    private void senderTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senderTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldActionPerformed
+    }//GEN-LAST:event_senderTextFieldActionPerformed
 
     private void turnOn_menuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnOn_menuItemActionPerformed
         myServer = new Server(this);
@@ -133,6 +139,11 @@ public class ServerGUI extends javax.swing.JFrame {
     private void file_menuItemComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_file_menuItemComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_file_menuItemComponentAdded
+
+    private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
+        myServer.sendBroadcastMessage(senderTextField.getText());
+        senderTextField.setText("");
+    }//GEN-LAST:event_sendButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,16 +184,16 @@ public class ServerGUI extends javax.swing.JFrame {
     private javax.swing.JMenu file_menuItem;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JButton send_Btn;
-    private javax.swing.JTextArea textArea;
-    private javax.swing.JTextField textField;
+    private javax.swing.JTextArea readerTextArea;
+    private javax.swing.JButton sendButton;
+    private javax.swing.JTextField senderTextField;
     private javax.swing.JMenuItem turnOff_menuItem;
     private javax.swing.JMenuItem turnOn_menuItem;
     // End of variables declaration//GEN-END:variables
 
 
     public void setTextArea(String txt){
-        textArea.append(txt + System.lineSeparator());
+        readerTextArea.append(txt + System.lineSeparator());
     }
     
     

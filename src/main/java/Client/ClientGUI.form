@@ -77,7 +77,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="textField" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="send_Btn" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="sendButton" min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -121,7 +121,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="textField" max="32767" attributes="0"/>
-                  <Component id="send_Btn" pref="100" max="32767" attributes="0"/>
+                  <Component id="sendButton" pref="100" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -131,6 +131,7 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="textField">
       <Properties>
+        <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="toolTipText" type="java.lang.String" value="write here.."/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
           <Color id="Text Cursor"/>
@@ -141,10 +142,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="send_Btn">
+    <Component class="javax.swing.JButton" name="sendButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="-&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendButtonActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>

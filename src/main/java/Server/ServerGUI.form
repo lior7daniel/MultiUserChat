@@ -68,9 +68,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" alignment="0" pref="480" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="textField" max="32767" attributes="0"/>
+                      <Component id="senderTextField" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="send_Btn" min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="sendButton" min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -84,8 +84,8 @@
               <Component id="jScrollPane1" pref="276" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="textField" max="32767" attributes="0"/>
-                  <Component id="send_Btn" pref="70" max="32767" attributes="0"/>
+                  <Component id="senderTextField" max="32767" attributes="0"/>
+                  <Component id="sendButton" pref="70" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -100,7 +100,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTextArea" name="textArea">
+        <Component class="javax.swing.JTextArea" name="readerTextArea">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
@@ -109,7 +109,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JTextField" name="textField">
+    <Component class="javax.swing.JTextField" name="senderTextField">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="write here.."/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -118,13 +118,16 @@
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="senderTextFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="send_Btn">
+    <Component class="javax.swing.JButton" name="sendButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="-&gt;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sendButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
