@@ -36,6 +36,7 @@ public class ServerClientHandler extends Thread{
 
     @Override
     public void run() {
+        System.out.println(this.getId() + " is now running!");
         MessagesListener();
     }
     
@@ -54,7 +55,11 @@ public class ServerClientHandler extends Thread{
     }
     
     protected void MessagesTransmitter(String str){
-        writer.write(str);
+        writer.println(str);
+    }
+    
+    public String toString(){
+        return String.valueOf(this.getId());
     }
     
 }

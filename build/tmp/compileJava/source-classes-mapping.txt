@@ -1,11 +1,11 @@
+Client/Client.java
+ Client.Client
 Client/ClientGUI.java
  Client.ClientGUI
  Client.ClientGUI$1
  Client.ClientGUI$2
  Client.ClientGUI$3
  Client.ClientGUI$4
-Client/Client.java
- Client.Client
 Server/ServerGUI.java
  Server.ServerGUI
  Server.ServerGUI$1

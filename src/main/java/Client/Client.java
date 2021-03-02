@@ -61,8 +61,7 @@ public class Client extends Thread{
     }
     
     protected void sendBroadcastMessage(String str){
-        writer.write(str);
-        myClientGUI.setTextArea(str);
+        writer.println(str);
     }
         
         

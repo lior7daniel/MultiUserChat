@@ -178,6 +178,7 @@ public class ClientGUI extends javax.swing.JFrame {
             connectButton.setText("Disconnect");
         }
         else {
+            
             myClient = null;
           
             connectButton.setText("Connect");
